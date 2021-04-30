@@ -5,6 +5,10 @@
 #include <ArduinoJson.h> // https://github.com/kakopappa/sinric/wiki/How-to-add-dependency-libraries
 #include <StreamString.h>
 
+//
+// Garage Door Opener
+// v2
+
 // In Linux, update the port permission:   sudo chmod o+rw /dev/ttyUSB0
 
 
@@ -169,14 +173,14 @@ void setup() {
   }
 
   // server address, port and URL
- ///// webSocket.begin("iot.sinric.com", 80, "/");
+  webSocket.begin("iot.sinric.com", 80, "/");
 
   // event handler
- /// webSocket.onEvent(webSocketEvent);
- /// webSocket.setAuthorization("apikey", MyApiKey);
+  webSocket.onEvent(webSocketEvent);
+  webSocket.setAuthorization("apikey", MyApiKey);
  
   // try again every 5000ms if connection has failed
- /// webSocket.setReconnectInterval(5000);   // If you see 'class WebSocketsClient' has no member named 'setReconnectInterval' error update arduinoWebSockets
+  webSocket.setReconnectInterval(5000);   // If you see 'class WebSocketsClient' has no member named 'setReconnectInterval' error update arduinoWebSockets
 }
 
 void loop() {
